@@ -1,0 +1,15 @@
+{
+    "name": "googlesheets.javierperan",
+    "description": "A very simple webview app for Google Sheets. You can check the source code.",
+    "architecture": "@CLICK_ARCH@",
+    "title": "Google Sheets",
+    "hooks": {
+        "googlesheets": {
+            "apparmor": "googlesheets.apparmor",
+            "desktop":  "googlesheets.desktop"
+        }
+    },
+    "version": "1.0.0",
+    "maintainer": "Javier Perán <javperan.develop@gmail.com>",
+    "framework" : "@CLICK_FRAMEWORK@"
+}
