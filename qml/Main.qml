@@ -19,6 +19,7 @@ import Ubuntu.Components 1.3
 //import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import Qt.labs.settings 1.0
+import Morph.Web 0.1
 
 MainView {
     id: root
@@ -35,19 +36,27 @@ MainView {
         header: PageHeader {
             id: header
             title: i18n.tr('Google Sheets')
+           leadingActionBar.actions:[
+               Action{
+               id:back_button
+               iconName: 'back'
+               onTriggered: mywebview.back();
+              }]
+           trailingActionBar.actions: [Action{
+               id:refresh_button
+               iconName: 'refresh'
+               }]
         }
 
-        Label {
-            anchors {
-                top: header.bottom
-                left: parent.left
-                right: parent.right
-                bottom: parent.bottom
+        WebView{
+            anchors{
+            left:parent.left
+            right:parent.right
+            bottom: parent.bottom
+            top:header.bottom
             }
-            text: i18n.tr('Hello World!')
-
-            verticalAlignment: Label.AlignVCenter
-            horizontalAlignment: Label.AlignHCenter
+        id:mywebview
+        url:'https://accounts.google.com/v3/signin/identifier?dsh=S-787914916%3A1685957432290396&continue=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fcreate%3Fhl%3Des&ffgf=1&followup=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fcreate%3Fhl%3Des&hl=es&ifkv=Af_xneFTgJZ3WPjYj2mE1JYhW3sK08H4-RWxymtyiuftdLXBtSMy_-qZRBb2mGJ7ebmOX7nwHTjltg&ltmpl=sheets&osid=1&passive=1209600&service=wise&flowName=GlifWebSignIn&flowEntry=ServiceLogin'
         }
     }
 }
